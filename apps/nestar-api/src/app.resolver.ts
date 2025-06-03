@@ -7,3 +7,5 @@ export class AppResolver {
         return 'GraphQL API Server';
     }
 }
+
+

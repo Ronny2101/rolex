@@ -16,7 +16,7 @@ import { DatabaseModule } from './database/database.module';
       driver: ApolloDriver,
       playground: true,
       uploads: false,
-      autoSchemafile: true,
+      autoSchemaFile: true,
     }),
     ComponentsModule,
     DatabaseModule,
