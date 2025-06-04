@@ -19,8 +19,8 @@
 
 function printNumbers(a: number = 1) {
   if (a > 5) return;
-    console.log(a);
     setTimeout(() => printNumbers(a + 1), 1000);
+    console.log(a);
 }
 
 printNumbers();
