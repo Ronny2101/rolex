@@ -13,3 +13,5 @@ function reduceNestedArray(array: any[]) {
 }
 
 console.log(reduceNestedArray([1, [1, 2, [4]]]));
+
+/*"@types/graphql": "^14.2.3",*/
