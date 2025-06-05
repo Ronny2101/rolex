@@ -17,10 +17,10 @@
 
 //Task ZK
 
-function printNumbers(a: number = 1) {
-  if (a > 5) return;
-    setTimeout(() => printNumbers(a + 1), 1000);
-    console.log(a);
-}
+// function printNumbers(a: number = 1) {
+//   if (a > 5) return;
+//     setTimeout(() => printNumbers(a + 1), 1000);
+//     console.log(a);
+// }
 
-printNumbers();
+// printNumbers();
