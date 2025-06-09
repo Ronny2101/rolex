@@ -15,7 +15,7 @@ import { DatabaseModule } from './database/database.module';
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       playground: true,
-      uploads: false,
+      uploads: true,
       autoSchemaFile: true,
     }),
     ComponentsModule,
