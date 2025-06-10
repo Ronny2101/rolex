@@ -24,3 +24,14 @@
 // }
 
 // printNumbers();
+
+
+//Task ZM
+
+function reverseInteger(a: number) {
+    const reversed = Number(a.toString().split('').reverse().join(''));
+    return reversed;
+}
+
+
+console.log(reverseInteger(123456789));
