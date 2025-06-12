@@ -18,8 +18,8 @@ export class MemberService {
          //TODO: Authentication via Token
         return result;
        } catch (err) {
-        console.log('Error, Service.model:', err);
-        throw new BadGatewayException(err);
+        console.log('Error, Service.model:', err.message);
+        throw new BadGatewayException(Message.USED_MEMBER_NICK_OR_PHONE);
        }
     }
 
