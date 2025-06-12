@@ -28,10 +28,19 @@
 
 //Task ZM
 
-function reverseInteger(a: number) {
-    const reversed = Number(a.toString().split('').reverse().join(''));
-    return reversed;
+// function reverseInteger(a: number) {
+//     const reversed = Number(a.toString().split('').reverse().join(''));
+//     return reversed;
+// }
+
+
+// console.log(reverseInteger(123456789));
+
+//Task ZL
+
+function stringToKebab(a: string) {
+    return a.toLowerCase().split(' ').join('-');
 }
 
 
-console.log(reverseInteger(123456789));
+console.log(stringToKebab("I Love Kebab"));
