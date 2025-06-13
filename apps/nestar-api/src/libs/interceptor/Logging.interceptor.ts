@@ -1,6 +1,5 @@
 import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from "@nestjs/common";
 import { GqlContextType, GqlExecutionContext } from "@nestjs/graphql";
-import { stringify } from "querystring";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 
@@ -10,7 +9,7 @@ import { tap } from "rxjs/operators";
 export class LoggingInterceptor implements NestInterceptor {
     private readonly logger: Logger = new Logger();
 
-    intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    public intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
       const recordTime = Date.now();
       const requestType = context.getType<GqlContextType>();
 
