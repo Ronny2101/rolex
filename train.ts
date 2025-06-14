@@ -38,9 +38,18 @@
 
 //Task ZL
 
-function stringToKebab(a: string) {
-    return a.toLowerCase().split(' ').join('-');
+// function stringToKebab(a: string) {
+//     return a.toLowerCase().split(' ').join('-');
+// }
+
+
+// console.log(stringToKebab("I Love Kebab"));
+
+//Task ZN
+
+function rotateArray(array: number[], index: number) {
+    return[...array.slice(index + 1), ...array.slice(0, index + 1)];
 }
 
 
-console.log(stringToKebab("I Love Kebab"));
+console.log(rotateArray([1, 2, 3, 4, 5, 6, ], 3));
