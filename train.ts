@@ -47,9 +47,28 @@
 
 //Task ZN
 
-function rotateArray(array: number[], index: number) {
-    return[...array.slice(index + 1), ...array.slice(0, index + 1)];
+// function rotateArray(array: number[], index: number) {
+//     return[...array.slice(index + 1), ...array.slice(0, index + 1)];
+// }
+
+
+// console.log(rotateArray([1, 2, 3, 4, 5, 6, ], 3));
+
+//Task ZO
+
+function areParenthesesBalanced(a: string) {
+    let count = 0;
+    for (let i = 0;
+        i < a.length; 
+        i++) {
+            if (a[i] === '(') count++;
+            else if(a[i] === ')') {
+                count--;
+                if (count < 0) return false;
+            }
+        }
+        return count === 0;
 }
 
-
-console.log(rotateArray([1, 2, 3, 4, 5, 6, ], 3));
+console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda"));
+console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda emas)"));
