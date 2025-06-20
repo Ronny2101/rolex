@@ -56,19 +56,29 @@
 
 //Task ZO
 
-function areParenthesesBalanced(a: string) {
-    let count = 0;
-    for (let i = 0;
-        i < a.length; 
-        i++) {
-            if (a[i] === '(') count++;
-            else if(a[i] === ')') {
-                count--;
-                if (count < 0) return false;
-            }
-        }
-        return count === 0;
-}
+// function areParenthesesBalanced(a: string) {
+//     let count = 0;
+//     for (let i = 0;
+//         i < a.length; 
+//         i++) {
+//             if (a[i] === '(') count++;
+//             else if(a[i] === ')') {
+//                 count--;
+//                 if (count < 0) return false;
+//             }
+//         }
+//         return count === 0;
+// }
 
-console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda"));
-console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda emas)"));
+// console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda"));
+// console.log(areParenthesesBalanced("string()ichida(qavslar) soni()balansda emas)"));
+
+//Task ZP
+
+function areArraysEqual(a: any[], b: any[]) {
+    return [...new Set(a)].sort().toString() === [...new Set(b)].sort().toString();
+  }
+
+  console.log(areArraysEqual([1,2,3], [3,1,2]));
+  console.log(areArraysEqual([1,2,3], [3,1,5,2,1]));
+  console.log(areArraysEqual([1,2,3], [4,1,2]));
