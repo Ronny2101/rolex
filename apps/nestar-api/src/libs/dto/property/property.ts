@@ -1,6 +1,7 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { ObjectId } from "mongoose";
 import { PropertyLocation, PropertyStatus, PropertyType } from "../../enums/property.enum";
+import { Member } from "../member/member";
 
 
 
@@ -77,5 +78,10 @@ export class Property {
 
     @Field(() => Date)
     updatedAt: Date;
+
+    /** from agregation  */
+
+    @Field(() => Member, { nullable: true })
+    memberData?; Member;
 
 }
