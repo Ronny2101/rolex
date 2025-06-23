@@ -75,10 +75,20 @@
 
 //Task ZP
 
-function areArraysEqual(a: any[], b: any[]) {
-    return [...new Set(a)].sort().toString() === [...new Set(b)].sort().toString();
-  }
+// function areArraysEqual(a: any[], b: any[]) {
+//     return [...new Set(a)].sort().toString() === [...new Set(b)].sort().toString();
+//   }
 
-  console.log(areArraysEqual([1,2,3], [3,1,2]));
-  console.log(areArraysEqual([1,2,3], [3,1,5,2,1]));
-  console.log(areArraysEqual([1,2,3], [4,1,2]));
+//   console.log(areArraysEqual([1,2,3], [3,1,2]));
+//   console.log(areArraysEqual([1,2,3], [3,1,5,2,1]));
+//   console.log(areArraysEqual([1,2,3], [4,1,2]));
+
+//Task ZQ
+
+function findDuplicates(a: number[]) {
+  const count: Record<number, number> = {};
+  a.forEach(n => count[n] = (count[n] || 0) + 1);
+  return [...new Set(a.filter(n => count[n] > 1))];
+}
+
+console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3,4]));
