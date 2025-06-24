@@ -32,7 +32,7 @@ export class PropertyService {
            });
            return result;
         } catch (err) {
-            console.log('Error, Servive.model:', err.message);
+            console.log('Error, Service.model:', err.message);
             throw new BadRequestException(Message.CREATE_FAILED);
         }
     }
@@ -55,20 +55,6 @@ export class PropertyService {
         }
         targetProperty.memberData = await this.memberService.getMember(null, targetProperty.memberId);
         return targetProperty;
-    }
-
-
-    public async propertyStatsEditor(input: StatisticModifier): Promise<Property> {
-        const { _id, targetKey, modifier } = input;
-        return await this.propertyModel
-          .findByIdAndUpdate(
-            _id,
-            {$inc: { [targetKey] : modifier } },
-            {
-                new: true,
-            },
-          )
-          .exec();
     }
 
 
@@ -260,4 +246,18 @@ export class PropertyService {
 
             return  result;
     }
+
+    public async propertyStatsEditor(input: StatisticModifier): Promise<Property> {
+        const { _id, targetKey, modifier } = input;
+        return await this.propertyModel
+          .findByIdAndUpdate(
+            _id,
+            {$inc: { [targetKey] : modifier } },
+            {
+                new: true,
+            },
+          )
+          .exec();
+    }
+
 }
