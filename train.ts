@@ -85,10 +85,24 @@
 
 //Task ZQ
 
-function findDuplicates(a: number[]) {
-  const count: Record<number, number> = {};
-  a.forEach(n => count[n] = (count[n] || 0) + 1);
-  return [...new Set(a.filter(n => count[n] > 1))];
+// function findDuplicates(a: number[]) {
+//   const count: Record<number, number> = {};
+//   a.forEach(n => count[n] = (count[n] || 0) + 1);
+//   return [...new Set(a.filter(n => count[n] > 1))];
+// }
+
+// console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3,4]));
+
+//TASK ZR
+
+function countNumberAndLetters(a: string) {
+  let number = 0, letter = 0;
+
+  for (const char of a) {
+    if (/[0-9]/.test(char)) number++;
+    else if (/[a-zA-Z]/.test(char)) letter++;
+  }
+  return { number, letter };
 }
 
-console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3,4]));
+console.log(countNumberAndLetters("string1523%&"));
