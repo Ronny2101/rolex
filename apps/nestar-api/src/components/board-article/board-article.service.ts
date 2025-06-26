@@ -16,8 +16,8 @@ import { lookupMember, shapeIntoMongoObjectId } from '../../libs/config';
 export class BoardArticleService {
         constructor(
             @InjectModel('BoardArticle') private readonly boardArticleModel: Model<BoardArticle>,
-            private memberService: MemberService,
-            private viewService: ViewService
+            private readonly memberService: MemberService,
+            private readonly viewService: ViewService
            
         ) {}
 
@@ -30,6 +30,8 @@ export class BoardArticleService {
                     targetKey: 'memberArticles',
                     modifier: 1,
                 });
+
+
                 return result;
             } catch (err) {
                 console.log('Error, Service.model:', err.message);
@@ -135,7 +137,7 @@ export class BoardArticleService {
                            { $limit: input.limit },
                        
                            lookupMember,
-                           {$unwind: '$memberData'}
+                           { $unwind: '$memberData'}
                        ],
                           metaCounter: [{ $count: 'total' }],
                       },
@@ -148,7 +150,7 @@ export class BoardArticleService {
         }     
 
 
-        public async updateBoardArticlesByAdmin(input: BoardArticleUpdate): Promise<BoardArticle> {
+        public async updateBoardArticleByAdmin(input: BoardArticleUpdate): Promise<BoardArticle> {
             const { _id, articleStatus } = input;
            
             const result = await this.boardArticleModel
@@ -162,11 +164,12 @@ export class BoardArticleService {
                     targetKey: 'memberArticles',
                     modifier: -1,
                 });
+
                 return result;
         }
 
 
-        public async removeBoardArticlesByAdmin(articleId: ObjectId): Promise<BoardArticle> {
+        public async removeBoardArticleByAdmin(articleId: ObjectId): Promise<BoardArticle> {
             const search: T = {
                 _id:articleId,
                 articleStatus: BoardArticleStatus.DELETE };
