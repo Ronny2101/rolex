@@ -110,7 +110,7 @@
 //TASK ZS 
 
 function singleNumber(arr: number[]) {
-  return arr.find(x => arr.indexOf(x) === arr.lastIndexOf(x))!;
+  return arr.find(x => arr.indexOf(x) === arr.lastIndexOf(x));
 }
 
 console.log(singleNumber([4, 2, 1, 2, 1]));
