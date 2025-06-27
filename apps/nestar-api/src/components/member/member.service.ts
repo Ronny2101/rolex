@@ -92,6 +92,8 @@ export class MemberService {
         }
 
         //meLiked
+        const likeInput = { memberId: memberId, likeRefId: targetId, likeGroup: LikeGroup.MEMBER }
+        targetMember.meLiked = await this.likeService.checkLikeExistence(likeInput);
         //meFollowed
         return targetMember;
     }
@@ -131,7 +133,7 @@ export class MemberService {
             likeGroup: LikeGroup.MEMBER,
         };
 
-        // LIKE TOGGLE via Like modules
+    
         const modifier: number =  await this.likeService.toggleLike(input);
         const result = await this.memberStatsEditor({ _id: likeRefId, targetKey: 'memberLikes', modifier: modifier });
 
@@ -145,7 +147,7 @@ export class MemberService {
         const match: T = {};
         const sort: T = { [input?.sort ?? 'createdAt']: input?.direction ?? Direction.DESC };
 
-        if (memberStatus) match.MemberStatus​​ = memberStatus;
+        if (memberStatus) match.MemberStatus = memberStatus;
         if(memberType) match.memberType = memberType;
         if (text) match.memberNick = { $regex: new RegExp(text, 'i') };
         console.log('match:', match);

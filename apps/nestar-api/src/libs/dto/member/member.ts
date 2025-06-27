@@ -1,6 +1,7 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { ObjectId } from "mongoose";
 import { MemberAuthType, MemberStatus, MemberType } from "../../enums/member.enum";
+import { MeLiked } from "../like/like";
 
 
 @ObjectType()
@@ -71,7 +72,7 @@ export class Member {
     @Field(() => Int)
     memberBlocks: number;
 
-    @Field(() => Date, {nullable: true})
+    @Field(() => Date, { nullable: true })
     deletedAt?: Date;
     
     @Field(() => Date)
@@ -80,8 +81,13 @@ export class Member {
     @Field(() => Date)
     updatedAt: Date;
 
-    @Field(() => String, {nullable: true})
+    @Field(() => String, { nullable: true })
     accessToken?: string;
+
+    /**  from agregate **/
+
+    @Field(() => [MeLiked], { nullable: true })
+    meLiked?: MeLiked[];
 }
 
 @ObjectType()
