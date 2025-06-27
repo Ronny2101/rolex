@@ -95,14 +95,22 @@
 
 //TASK ZR
 
-function countNumberAndLetters(a: string) {
-  let number = 0, letter = 0;
+// function countNumberAndLetters(a: string) {
+//   let number = 0, letter = 0;
 
-  for (const char of a) {
-    if (/[0-9]/.test(char)) number++;
-    else if (/[a-zA-Z]/.test(char)) letter++;
-  }
-  return { number, letter };
+//   for (const char of a) {
+//     if (/[0-9]/.test(char)) number++;
+//     else if (/[a-zA-Z]/.test(char)) letter++;
+//   }
+//   return { number, letter };
+// }
+
+// console.log(countNumberAndLetters("string1523%&"));
+
+//TASK ZS 
+
+function singleNumber(arr: number[]) {
+  return arr.find(x => arr.indexOf(x) === arr.lastIndexOf(x))!;
 }
 
-console.log(countNumberAndLetters("string1523%&"));
+console.log(singleNumber([4, 2, 1, 2, 1]));
