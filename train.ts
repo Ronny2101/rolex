@@ -109,8 +109,21 @@
 
 //TASK ZS 
 
-function singleNumber(arr: number[]) {
-  return arr.find(x => arr.indexOf(x) === arr.lastIndexOf(x));
+// function singleNumber(arr: number[]) {
+//   return arr.find(x => arr.indexOf(x) === arr.lastIndexOf(x));
+// }
+
+// console.log(singleNumber([4, 2, 1, 2, 1]));
+
+//TASK ZT
+
+function firstUniqueCharIndex(str: string) {
+  for (let i = 0; i < str.length; i++) {
+    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) return i;
+  }
+  return -1
 }
 
-console.log(singleNumber([4, 2, 1, 2, 1]));
+
+console.log(firstUniqueCharIndex("stamp"));
+console.log(firstUniqueCharIndex("sstammpp"));
