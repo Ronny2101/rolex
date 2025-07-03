@@ -117,13 +117,21 @@
 
 //TASK ZT
 
-function firstUniqueCharIndex(str: string) {
-  for (let i = 0; i < str.length; i++) {
-    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) return i;
-  }
-  return -1
+// function firstUniqueCharIndex(str: string) {
+//   for (let i = 0; i < str.length; i++) {
+//     if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) return i;
+//   }
+//   return -1
+// }
+
+
+// console.log(firstUniqueCharIndex("stamp"));
+// console.log(firstUniqueCharIndex("sstammpp"));
+
+//Task ZU
+
+function sumOfUnique(num: number[]) {
+  return num.filter(n => num.indexOf(n) === num.lastIndexOf(n)).reduce((sum, n ) => sum + n, 0);
 }
 
-
-console.log(firstUniqueCharIndex("stamp"));
-console.log(firstUniqueCharIndex("sstammpp"));
+console.log(sumOfUnique([1, 2, 3, 2, 5, 4]));
