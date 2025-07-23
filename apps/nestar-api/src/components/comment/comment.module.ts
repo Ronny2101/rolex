@@ -10,7 +10,8 @@ import { PropertyModule } from '../property/property.module';
 import { BoardArticleModule } from '../board-article/board-article.module';
 
 @Module({imports: [
-  MongooseModule.forFeature([{ 
+  MongooseModule.forFeature([
+    { 
       name: "Comment", 
       schema: CommentSchema,
     },
