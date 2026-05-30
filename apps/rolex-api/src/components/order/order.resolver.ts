@@ -1,0 +1,54 @@
+import { Resolver, Query, Mutation, Args, Context, GqlExecutionContext } from '@nestjs/graphql';
+import { OrderService } from './order.service';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { Order } from '../../libs/dto/orders/order';
+import { AuthMember } from '../auth/decorators/authMember.decorator';
+import { ObjectId } from 'mongoose';
+import { OrderUpdateInput } from '../../libs/dto/orders/order.update.';
+import { OrderInquiry, OrderItemInput } from '../../libs/dto/orders/order.input.';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { MemberType } from '../../libs/enums/member.enum';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { shapeIntoMongoObjectId } from '../../libs/config';
+
+@Resolver(() => Order)
+export class OrderResolver {
+	constructor(private readonly orderService: OrderService) {}
+
+	@Mutation(() => Order)
+	@Roles(MemberType.USER)
+	@UseGuards(RolesGuard)
+	public async createOrder(
+		@Args('input', { type: () => [OrderItemInput] }) input: OrderItemInput[],
+		@AuthMember('_id') memberId: ObjectId,
+	): Promise<Order> {
+		console.log('createOrder here');
+		const orderId = shapeIntoMongoObjectId(input);
+		const result = await this.orderService.createOrder(memberId, orderId);
+		return result;
+	}
+
+	@Query(() => [Order])
+	@Roles(MemberType.USER)
+	@UseGuards(RolesGuard)
+	public async getMyOrders(
+		@Args('input') input: OrderInquiry,
+		@AuthMember('_id') memberId: ObjectId,
+	): Promise<Order[]> {
+		console.log('memberId passed to service:', memberId);
+		const orderId = shapeIntoMongoObjectId(input);
+		return this.orderService.getMyOrders(memberId, orderId);
+	}
+
+	@Mutation(() => Order)
+	@Roles(MemberType.USER)
+	@UseGuards(RolesGuard)
+	public async updateOrder(
+		@Args('input') input: OrderUpdateInput,
+		@AuthMember('_id') memberId: ObjectId,
+	): Promise<Order> {
+		const orderId = shapeIntoMongoObjectId(input);
+		return this.orderService.updateOrder(memberId, orderId);
+	}
+}
